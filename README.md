@@ -24,8 +24,9 @@
 
 Пример ключа - "f036e1e61492ca4ffb2853b4195e5a896ba4fb13"
 
-Создать файл '.env' в папке со скриптом и записать ключ в переменную TOKEN.<br>
-![image](https://user-images.githubusercontent.com/88648536/235087891-3bab887f-351b-4e26-912e-a3ee792be943.png)
+Создать файл '.env' в папке со скриптом и записать ключ в переменную BITLY_TOKEN.<br>
+![image](https://user-images.githubusercontent.com/88648536/235207354-61b73c11-19d8-44b8-87a3-01cb753897bc.png)
+
 
 
 Затем выполнить ```python3 main.py```
