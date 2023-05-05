@@ -11,13 +11,14 @@
 После установки Python3 нужно выполнить эти команды
 
 Для Windows:
-
-```py -m pip install -r requirements.txt```
+```
+py -m pip install -r requirements.txt
+```
 
 Для Unix/MacOS
-
-```python -m pip install -r requirements.txt```
-
+```
+python -m pip install -r requirements.txt
+```
 ## Запуск скрипта
 
 Для работы скрипта необходимо зарегистрировать на сайте bit.ly и получить ключ к API Bitly<br> (https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-generate-an-OAuth-access-token-for-the-Bitly-API-)
@@ -28,8 +29,10 @@
 ![image](https://user-images.githubusercontent.com/88648536/235207354-61b73c11-19d8-44b8-87a3-01cb753897bc.png)
 
 
-
-Затем выполнить ```python3 main.py```
+Затем выполнить 
+```
+python3 main.py
+```
 
 ## Результат выполнения
 При вводе длинной ссылки (для сокращения):<br>
