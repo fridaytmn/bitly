@@ -9,39 +9,47 @@ def shorten_link(token, url):
     body = {'long_url': url}
     short_link = requests.post(link, headers=headers, json=body)
     short_link.raise_for_status()
+    print(short_link.ok)
     bitlink = short_link.json()
-    return f'Битлинк {bitlink['id']}'
+    return bitlink['id']
 
 
 def count_clicks(token, bitlink):
-    link = f'https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary'
-    headers = {'Authorization': f'Bearer {token}'}
-    params = {'unit': 'day',
-              'units': '-1',
-              'unit_reference': ''}
-    clicks_count = requests.get(link, headers=headers, params=params)
-    clicks_count.raise_for_status()
-    clicks_count = clicks_count.json()
-    return clicks_count['total_clicks']
+    try:
+        link = f'https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary'
+        headers = {'Authorization': f'Bearer {token}'}
+        params = {'units': '-1',
+                  'unit_reference': ''}
+        clicks_count = requests.get(link, headers=headers, params=params)
+        clicks_count.raise_for_status()
+        clicks_count = clicks_count.json()
+    except requests.RequestException:
+        return 'Этот битлинк не пренадлежит Вам'
+    return f'Количество переходов: {clicks_count["total_clicks"]}'
 
 
 def is_bitlink(url):
-    load_dotenv()
-    token = os.environ['TOKEN']
-    if url.startswith('bit.ly'):
-        return f'Количество кликов: {count_clicks(token, url)}'
+    if url.startswith('http://') or url.startswith('https://'):
+        return False
     else:
-        return f'Битлинк {shorten_link(token, url)}'
+        response = requests.get(f'http://{url}')
+        response.raise_for_status()
+        return response.ok
 
 
 def main():
+    load_dotenv()
+    token = os.environ['BITLY_TOKEN']
     url = input('Введите ссылку: ')
     try:
-        print(is_bitlink(url))
-    except requests.exceptions.HTTPError:
-        print('Введена неверная ссылка Битлинк')
-    except requests.exceptions.ConnectionError:
-        print('Нет доступа к сайту')
+        if is_bitlink(url):
+            print(count_clicks(token, url))
+        else:
+            print(shorten_link(token, url))
+    except requests.ConnectionError:
+        print('Сайт недоступен')
+    except requests.RequestException:
+        print('Неверные данные для запроса')
 
 
 if __name__ == '__main__':
