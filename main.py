@@ -11,7 +11,7 @@ def shorten_link(token, url):
     short_link.raise_for_status()
     print(short_link.ok)
     bitlink = short_link.json()
-    return bitlink['id']
+    return f'Битлинк: {bitlink['id']}'
 
 
 def count_clicks(token, bitlink):
