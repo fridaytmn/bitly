@@ -2,6 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse
+import argparse
 
 
 def shorten_link(token, url):
@@ -37,6 +38,13 @@ def count_clicks(token, bitlink):
     return clicks_count
 
 
+def create_parser():
+    description = ('Формирует битлинк и считает кол-во переходов по битлинку')
+    help = 'Длинная ссылка (одна из 2-ух разновидностей)'
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('link', help=help)
+
+    return parser
 
 def is_bitlink(url, token):
     headers = {'Authorization': f'Bearer {token}'}
@@ -51,7 +59,9 @@ def main():
     load_dotenv()
     
     token = os.environ['BITLY_TOKEN']
-    url = input('Введите ссылку: ')
+    parser = create_parser()
+    args = parser.parse_args()
+    url = args.link
 
     try:
         bitlink = is_bitlink(url, token)
