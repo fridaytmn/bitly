@@ -8,7 +8,7 @@
 Для работы скрипта потребуется установленный Python3.<br>
 Установить его можно с официального сайта http://www.python.org
 
-После установки Python3 нужно выполнить эти команды
+После установки Python3 нужно выполнить эти команды:
 
 Для Windows:
 ```
@@ -21,7 +21,7 @@ python -m pip install -r requirements.txt
 ```
 ## Запуск скрипта
 
-Для работы скрипта необходимо зарегистрировать на сайте bit.ly и получить ключ к API Bitly<br> (https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-generate-an-OAuth-access-token-for-the-Bitly-API-)
+Для работы скрипта необходимо зарегистрировать на сайте bit.ly и получить ключ к API Bitly.<br> (https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-generate-an-OAuth-access-token-for-the-Bitly-API-)
 
 Пример ключа - "f036e1e61492ca4ffb2853b4195e5a896ba4fb13"
 
@@ -29,10 +29,11 @@ python -m pip install -r requirements.txt
 ![image](https://user-images.githubusercontent.com/88648536/235207354-61b73c11-19d8-44b8-87a3-01cb753897bc.png)
 
 
-Затем выполнить 
+Затем выполнить:
 ```
-python3 main.py
+python3 main.py SITE
 ```
+Где вместо `SITE` требуется указать ссылку на сайт, пример длинной ссылки - `https://github.com/fridaytmn` или короткая ссылка - `https://bit.ly/3NjMS8k`.
 
 ## Результат выполнения
 При вводе длинной ссылки (для сокращения):<br>
