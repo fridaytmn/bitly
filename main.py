@@ -66,7 +66,7 @@ def main():
     try:
         bitlink = is_bitlink(url, token)
         if bitlink:
-            print(f'Количество переходов по ссылке: {count_clicks(token, url)}')
+            print(f'Кол-во переходов по ссылке: {count_clicks(token, url)}')
         else:
             print(f'Ваш Битлинк: {shorten_link(token, url)}')
     except requests.HTTPError:
