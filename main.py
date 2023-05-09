@@ -18,10 +18,8 @@ def shorten_link(token, url):
 
 def get_striped(url):
     
-    parsed = urlparse(url)
-    scheme = f'{parsed.scheme}://'
-    short_url = parsed.geturl().replace(scheme, '', 1)
-    return short_url
+    parsed_url = urlparse(url)
+    return parsed_url.netloc + parsed_url.path
 
 
 def count_clicks(token, bitlink):
@@ -46,6 +44,7 @@ def create_parser():
 
     return parser
 
+
 def is_bitlink(url, token):
     headers = {'Authorization': f'Bearer {token}'}
     short_link = get_striped(url)
@@ -53,6 +52,7 @@ def is_bitlink(url, token):
     response = requests.get(url, headers=headers)
 
     return response.ok
+
 
 def main():
 
