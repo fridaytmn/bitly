@@ -17,13 +17,13 @@ def shorten_link(token, url):
 
 
 def get_striped(url):
-    
+
     parsed_url = urlparse(url)
     return parsed_url.netloc + parsed_url.path
 
 
 def count_clicks(token, bitlink):
-    
+
     headers = {'Authorization': f'Bearer {token}'}
     params = {'units': '-1',
               'unit_reference': ''}
@@ -57,7 +57,7 @@ def is_bitlink(url, token):
 def main():
 
     load_dotenv()
-    
+
     token = os.environ['BITLY_TOKEN']
     parser = create_parser()
     args = parser.parse_args()
