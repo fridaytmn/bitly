@@ -37,6 +37,7 @@ def count_clicks(token, bitlink):
 
 
 def create_parser():
+
     description = ('Формирует битлинк и считает кол-во переходов по битлинку')
     help = 'Длинная ссылка (одна из 2-ух разновидностей)'
     parser = argparse.ArgumentParser(description=description)
@@ -46,6 +47,7 @@ def create_parser():
 
 
 def is_bitlink(url, token):
+
     headers = {'Authorization': f'Bearer {token}'}
     short_link = get_striped(url)
     url = f'https://api-ssl.bitly.com/v4/bitlinks/{short_link}'
