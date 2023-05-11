@@ -19,7 +19,7 @@ def shorten_link(token, url):
 def get_striped(url):
 
     parsed_url = urlparse(url)
-    return parsed_url.netloc + parsed_url.path
+    return f'{parsed_url.netloc}{parsed_url.path}'
 
 
 def count_clicks(token, bitlink):
